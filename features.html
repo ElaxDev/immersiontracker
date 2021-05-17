@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/29dc477475.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      if (localStorage.theme === "dark") {
+        $(document.documentElement).addClass("dark");
+      } else {
+        $(document.documentElement).removeClass("dark");
+      }
+    </script>
+    <title>Immersion Tracker</title>
+  </head>
+  <body class="dark:text-gray-100 bg-white dark:bg-primaryDark">
+    <!--Content wrapper-->
+    <div>
+      <nav
+        class="
+          flex
+          items-center
+          dark:bg-transparent
+          bg-gray-700 bg-opacity-50
+          p-3
+          flex-wrap
+          text-gray-200
+          inset-x-0
+          fixed
+          backdrop-filter backdrop-blur-lg
+          z-50
+        "
+      >
+        <div>
+          <a href="index.html" class="p-2 mr-4 inline-flex items-center">
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="far"
+              data-icon="stopwatch"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+              class="fill-current dark:text-accentDark text-accent h-8 w-8 mr-2"
+            >
+              <title id="logo-text">Immersion Tracker</title>
+              <path
+                fill="currentColor"
+                d="M393.9 184l22.6-22.6c4.7-4.7 4.7-12.3 0-17l-17-17c-4.7-4.7-12.3-4.7-17 0l-20.7 20.7c-31.1-27.5-70.4-45.9-113.8-50.8V48h28c6.6 0 12-5.4 12-12V12c0-6.6-5.4-12-12-12H172c-6.6 0-12 5.4-12 12v24c0 6.6 5.4 12 12 12h28v49.4C96.4 109.3 16 197.2 16 304c0 114.9 93.1 208 208 208s208-93.1 208-208c0-44.7-14.1-86.1-38.1-120zM224 464c-88.4 0-160-71.6-160-160s71.6-160 160-160 160 71.6 160 160-71.6 160-160 160zm12-112h-24c-6.6 0-12-5.4-12-12V204c0-6.6 5.4-12 12-12h24c6.6 0 12 5.4 12 12v136c0 6.6-5.4 12-12 12z"
+                class=""
+              ></path>
+            </svg>
+
+            <span class="text-xl text-white font-bold uppercase tracking-wide"
+              >Immersion Tracker</span
+            >
+          </a>
+        </div>
+        <!-- Dark Mode Switcher -->
+        <div class="flex flex-row items-center justify-between space-x-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            />
+          </svg>
+          <div>
+            <input type="checkbox" id="toggle" class="hidden" />
+            <label for="toggle" class="cursor-pointer">
+              <div
+                class="
+                  w-9
+                  h-5
+                  flex
+                  items-center
+                  bg-gray-300
+                  dark:bg-gray-600
+                  rounded-full
+                  p-1
+                "
+              >
+                <div
+                  class="
+                    toggle-dot
+                    w-4
+                    h-4
+                    bg-white
+                    rounded-full
+                    shadow-md
+                    transform
+                    duration-300
+                    ease-in-out
+                  "
+                ></div>
+              </div>
+            </label>
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+        </div>
+        <!-- Switcher end -->
+        <button
+          class="
+            inline-flex
+            p-3
+            dark:hover:bg-gray-900
+            rounded
+            lg:hidden
+            ml-auto
+            nav-toggler
+          "
+          data-target="#navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div
+          class="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
+          id="navigation"
+        >
+          <div
+            class="
+              lg:inline-flex
+              lg:flex-row
+              lg:ml-auto
+              lg:w-auto
+              w-full
+              lg:items-center
+              items-start
+              flex flex-col
+              lg:h-auto
+            "
+          >
+            <a
+              href="index.html"
+              class="
+                transition
+                duration-300
+                ease-in-out
+                lg:inline-flex
+                lg:w-auto
+                w-full
+                px-3
+                py-2
+                rounded
+                items-center
+                justify-center
+                text-gray-200
+                dark:hover:bg-gray-900
+                hover:bg-gray-600
+                hover:text-white
+              "
+            >
+              <span> Home </span>
+            </a>
+            <a
+              href="features.html"
+              class="
+                transition
+                duration-300
+                ease-in-out
+                lg:inline-flex
+                lg:w-auto
+                w-full
+                px-3
+                py-2
+                rounded
+                items-center
+                justify-center
+                text-gray-200
+                dark:hover:bg-gray-900
+                hover:bg-gray-600
+                hover:text-white
+              "
+            >
+              <span> Features </span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!--End nav -->
+    <script src="./src/script.js"></script>
+    <main>
+      <div class="flex flex-col h-screen">
+        <div
+          class="
+            flex
+            items-center
+            p-10
+            dark:bg-FeaturesBGDark
+            bg-FeaturesBGLight bg-cover bg-fixed
+            h-72
+            w-auto
+          "
+        >
+          <h1 class="font-bold mt-10 text-white text-6xl">Features</h1>
+        </div>
+          <div class="mt-16 pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow js-animate-on-scroll">
+            <dl
+              class="
+                px-4
+                space-y-10
+                md:space-y-0
+                md:grid md:grid-cols-2
+                md:gap-x-8 md:gap-y-10
+              "
+            >
+              <div class="relative">
+                <dt>
+                  <div class="feature-icon-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                      />
+                    </svg>
+                  </div>
+                  <p class="feature-title-text">Clipboard page</p>
+                </dt>
+                <dd class="feature-description">
+                  A clipboard page with customization options and that is able
+                  to save your progress in a database so it is accessible
+                  anywhere.
+                </dd>
+              </div>
+
+              <div class="relative">
+                <dt>
+                  <div class="feature-icon-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 11l7-7 7 7M5 19l7-7 7 7"
+                      />
+                    </svg>
+                  </div>
+                  <p class="feature-title-text">Xp and level system</p>
+                </dt>
+                <dd class="feature-description">
+                  It will have an Xp and level system in which you can level up
+                  different skills (Reading, listening, etc...) by immersing.
+                </dd>
+              </div>
+
+              <div class="relative">
+                <dt>
+                  <div class="feature-icon-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                      />
+                    </svg>
+                  </div>
+                  <p class="feature-title-text">Recommendations</p>
+                </dt>
+                <dd class="feature-description">
+                  It will recommend you content by your level, things you've
+                  consumed before and your current level of understanding, so
+                  the content is the most comprehensible and it has the most i+1
+                  sentences.
+                </dd>
+              </div>
+
+              <div class="relative">
+                <dt>
+                  <div class="feature-icon-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <p class="feature-title-text">Leaderboard</p>
+                </dt>
+                <dd class="feature-description">
+                  A leaderboard can be motivational and it promoves a healthy
+                  competitiveness that way everyone strives to be in the top 10
+                  motivating them to do more immersion.
+                </dd>
+              </div>
+
+              <div class="relative">
+                <dt>
+                  <div class="feature-icon-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"
+                      />
+                    </svg>
+                  </div>
+                  <p class="feature-title-text">Detailed statistics</p>
+                </dt>
+                <dd class="feature-description">
+                  A detailed inform of your past week immersion with graphs and
+                  comparations to your other weeks, how much new vocab you
+                  mined, how much did your understanding improve and comparisons
+                  with your previous weeks.
+                </dd>
+              </div>
+
+              <div class="relative">
+                <dt>
+                  <div class="feature-icon-container">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                      />
+                    </svg>
+                  </div>
+                  <p class="feature-title-text">Anki integration</p>
+                </dt>
+                <dd class="feature-description">
+                  Anki is the best SRS tool and is open source, and it will have
+                  Anki integration allowing it to automatically update your
+                  stats according to the states of your cards or how many you
+                  mined.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        <footer
+          class="
+            bg-white
+            text-gray-700
+            dark:bg-gray-900
+            dark:text-gray-400
+            py-6
+            px-4
+            text-xs
+            flex
+            justify-between
+          "
+        >
+          <div>&copy; All rights reserved 2021</div>
+          <a class="transition ease-in-out transform delay-200 hover:rotate-12 hover:scale-105" href="mailto:elaxdev@outlook.com">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class=""
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+          </a>
+        </footer>
+      </div>
+    </main>
+  </body>
+</html>
