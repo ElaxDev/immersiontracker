@@ -669,19 +669,19 @@ video {
 }
 
 .bg-LightBG {
-  background-image: url('/assets/LightBG.svg');
+  background-image: url('./assets/LightBG.svg');
 }
 
 .bg-FeaturesBGLight {
-  background-image: url('/assets/FtLightBG.svg');
+  background-image: url('./assets/FtLightBG.svg');
 }
 
 .dark .dark\:bg-DarkBG {
-  background-image: url('/assets/DarkBG.svg');
+  background-image: url('./assets/DarkBG.svg');
 }
 
 .dark .dark\:bg-FeaturesBGDark {
-  background-image: url('/assets/FtDarkBG.svg');
+  background-image: url('./assets/FtDarkBG.svg');
 }
 
 .bg-opacity-50 {
